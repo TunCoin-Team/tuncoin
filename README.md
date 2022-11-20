@@ -24,7 +24,7 @@
 ## About the Project
 
 
-### :context: CONTEXT
+### CONTEXT
 
 <div>
   In recent years, we have seen a rapid expansion of digital currencies.
@@ -46,7 +46,7 @@
 </div>
 
 
-### :intro: INTRODUCTION
+### INTRODUCTION
 TunCoin is a crypto-currency token based on the Binance Smart Chain (BSC) created by the team for the development of three fully interlocking projects:
 
 1. The issuance of an intuitive digital token to simplify commercial and financial exchanges. With TunCoin anyone is able to access financial services and cheap
