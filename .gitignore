@@ -1,0 +1,81 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.code-workspace
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/keybindings.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+artifacts/*
+
+public/*
+
+/**/tmp/*
+
+/**/logs/*
+
+repo
+
+*.zip
+
+.angular
+
+!.gitkeep
+
+/documentation
+/report.html
+
+**/.icons/**
+**/css/**
+!/libs/nx-plugins/**/generators/format/formatters/css/**
+!/scripts/format/many/css/**
+
+.prettierrc
+.prettierignore
+migrations.json
+# Angular elements // Web Components
+/wc
+
+cucumber-report.html
+cucumber-messages.ndjson
+
+package-lock.json
+oc
+*.tar.gz*
+
+test-results
+false
+
