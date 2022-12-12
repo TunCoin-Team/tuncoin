@@ -17,6 +17,7 @@ contract TunCoin is Context, Bep20Interface, Ownable {
   uint8 private _decimals;
   string private _symbol;
   string private _name;
+  uint private _holders = 0;
 
   constructor() {
     _name = "TUNCOIN";
@@ -61,6 +62,11 @@ contract TunCoin is Context, Bep20Interface, Ownable {
    */
   function totalSupply() external override view returns (uint256) {
     return _totalSupply;
+  }
+
+  
+  function holdersCount() external view returns (uint) {
+    return _holders;
   }
 
   /**
@@ -174,7 +180,7 @@ contract TunCoin is Context, Bep20Interface, Ownable {
   function _transfer(address sender, address recipient, uint256 amount) internal {
     require(sender != address(0), "BEP20: transfer from the zero address");
     require(recipient != address(0), "BEP20: transfer to the zero address");
-
+    _holders++;
     _balances[sender] = _balances[sender].sub(amount, "BEP20: transfer amount exceeds balance");
     _balances[recipient] = _balances[recipient].add(amount);
     emit Transfer(sender, recipient, amount);
