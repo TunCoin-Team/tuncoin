@@ -17,7 +17,7 @@ contract TunCoin is Context, Bep20Interface, Ownable {
   uint8 private _decimals;
   string private _symbol;
   string private _name;
-  uint private _holders = 0;
+  address[] private _holders;
 
   constructor() {
     _name = "TUNCOIN";
@@ -66,7 +66,7 @@ contract TunCoin is Context, Bep20Interface, Ownable {
 
   
   function holdersCount() external view returns (uint) {
-    return _holders;
+    return _holders.length;
   }
 
   /**
@@ -180,10 +180,43 @@ contract TunCoin is Context, Bep20Interface, Ownable {
   function _transfer(address sender, address recipient, uint256 amount) internal {
     require(sender != address(0), "BEP20: transfer from the zero address");
     require(recipient != address(0), "BEP20: transfer to the zero address");
-    _holders++;
+    
     _balances[sender] = _balances[sender].sub(amount, "BEP20: transfer amount exceeds balance");
     _balances[recipient] = _balances[recipient].add(amount);
+    addHolder(recipient);
     emit Transfer(sender, recipient, amount);
+  }
+
+  /**
+   * @dev add new holder
+   *
+   * This is internal function is equivalent to {transfer}, and can be used to
+   * e.g. implement automatic token fees, slashing mechanisms, etc.
+   *
+   * Emits a {Transfer} event.
+   *
+   * Requirements:
+   *
+   * - `holder` cannot be the zero address.
+   * - `recipient` cannot be the zero address.
+   * - `sender` must have a balance of at least `amount`.
+   */
+  function addHolder(address holder) internal {
+    require(holder != address(0), "TunCoin: can't count zero address as holder");
+
+    bool exists;
+
+    for(uint i = 0; i < _holders.length; i++) {
+      if (_holders[i] == holder) {
+        exists = true;
+
+        break;
+      }
+    }
+
+    if(!exists) {
+      _holders.push(holder);
+    }
   }
 
 
